@@ -1,0 +1,32 @@
+O que é o Javascript 
+liguagem de programação de alto nivel
+JavaScript = JS = Vanilla JavaScript
+
+para deixar as paginas "vivas", é uma liguagem case-sensitive
+
+var minhaVariavel = 10;
+var MinhaVariavel = 20;
+
+Onde o JavaScript pode ser utilizado:
+
+
+Formas de Executar JavaScript
+Js Fiddle;
+arquivo importado no HTML
+e diretamente no console do navegador
+
+JS Fiddle é uma ferramenta online que premite aos Dvs, escrever, testar e compartilhar codigo em JavaScript, HTML e CSS 
+
+
+var x = 10;
+console.log(typeof x); //saida : number
+
+var y = "Olá mundo!";
+console.log(typeof y); //saida: string
+
+var z = true;
+console.log(typeof z); // saida: boolean
+
+function minhaFuncao(){}
+console.log(typeof minhaFuncao); // saida: função
+
