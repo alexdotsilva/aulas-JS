@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/aula03/style.css">
+
+    <title>Aula 03 | JavaScript - Cadastro de Funcionário</title>
+
+</head>
+
+<body>
+    <h1>Cadastro de Funcionários</h1>
+    <label for="nome">Nome do Funcionário: </label>
+    <input type="text" id="nome" name="nome" minlength="3" required><br>
+
+    <label for="cargo">Cargo: </label>
+    <input type="text" id="cargo" name="cargo" required><br>
+
+    <label for="salario">Salário: </label>
+    <input type="number" id="salario" name="salario"><br>
+
+    <label for="endereco">Endereço: </label>
+    <input type="text" id="endereco" name="endereco"><br>
+    
+    <label for="telefone">Telefone: </label>
+    <input type="text" id="telefone" name="telefone"><br>
+
+    <label for="foto">Foto do Funcionário: </label>
+    <input type="file" id="foto" name="foto"><br>
+
+    <button onclick="cadastrarFuncionario()">Cadastrar Funcionário</button>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.debug.js"></script>
+
+    <script>
+        function cadastrarFuncionario()
+        {
+            var nome = document.getElementById("nome").value;
+            var cargo = document.getElementById("cargo").value;
+            var salario = document.getElementById("salario").value;
+            var endereco = document.getElementById("endereco").value;
+            var telefone = document.getElementById("telefone").value;
+
+            var doc = new jsPDF();
+            doc.setFontSize(18);
+            doc.text(20, 20, "Ficha de Funcianário");
+            doc.setFontSize(14);
+            doc.text(20, 30, "Nome:"+nome);
+            doc.text(20, 40, "Cargo:"+cargo);
+            doc.text(20, 50, "Salário:"+salario);
+
+            var foto = document.getElementById("foto").files[0];
+            if(foto)
+            {
+                var reader = new FileReader();
+                reader.onload = function(e)
+                {
+                    var img = new Image();
+                    img.src = e.target.result;
+                    doc.addImage(img, "JPEG", 150, 10, 40, 40);
+                    doc.save("ficha_funcionario.pdf");
+                };
+                reader.readAsDataURL(foto);
+            }
+            else
+            {
+                alert("Selecione uma foto antes de gerar a ficha.")
+            }
+        }
+    </script>
+
+
+</body>
+</html>
