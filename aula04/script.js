@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function(){
     camposForm.forEach((campo) => {
         campo.addEventListener("blur", () => {
             validarCampo(campo);
+        console.log("passou aqui")
         });
     });
 });
@@ -10,15 +11,15 @@ document.addEventListener("DOMContentLoaded", function(){
 function validarCampo(campo){
     const valorCampo = campo.value;
     const erroElement = document.getElementById(`erro${
-        campo.id.charAt(0).toUpperCase()+ campo.id.slice(1)
-    }`);
-    if(valorCampo.trim()===' '){
+        campo.id.charAt(0).toUpperCase()+ campo.id.slice(1)}`);
+
+    if(valorCampo.trim()=== " " ){
         erroElement.innerHTML = `<p>tá esquecendo nada não?</p>`;
     }
-    else if(campo.id === "nome" && valorCampo.lenght < 3){
+    else if(campo.id === "nome" && valorCampo.length < 3){
         erroElement.innerHTML = `<p>precisa ser maior!</p>`;
     }
-    else if(campo.id === "sobrenome" && valorCampo.lenght < 3){
+    else if(campo.id === "sobrenome" && valorCampo.length < 3){
         erroElement.innerHTML = `<p>precisa ser maior!</p>`;
     }
     else {
