@@ -1,12 +1,12 @@
-.itemForm{
-    margin-bottom: 1rem;
-}
-.formulario{
-    display: flex; /*torna pagina responsiva*/
-    flex-direction: column;/*vai responder na direção horizontal*/
-    align-items: end;/*alinha items pelo fim*/
-    justify-content: center;
-}
+
 .erro{
     color: red;
+}
+.itemForm{
+    display: flex;
+    width: 300px;
+    padding-bottom: 0.5rem;
+}
+input{
+    margin-left: auto ;
 }

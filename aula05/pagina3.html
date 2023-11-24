@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contagem de Letras no Nome Completo</title>
+</head>
+<body>
+  <h1>Contagem de Letras no Nome Completo</h1>
+  <label for="nomeCompletoInput">Insira o Nome Completo:</label>
+  <input type="text" id="nomeCompletoInput">
+  <button onclick="exibirContagem()">Contar Letras</button>
+  <p id="resultado"></p>
+
+  <script>
+    function contarLetrasNoNomeCompleto(nomeCompleto) {
+      let contador = 0;
+      for (let i = 0; i < nomeCompleto.length; i++) {
+        const caractere = nomeCompleto[i].toLowerCase(); // Considerando letras maiúsculas e minúsculas iguais
+        if (/^[a-z]$/i.test(caractere)) { // Verifica se o caractere é uma letra do alfabeto
+          contador++;
+        }
+      }
+      return contador;
+    }
+
+    function exibirContagem() {
+      const nomeCompleto = document.getElementById('nomeCompletoInput').value;
+      const resultado = contarLetrasNoNomeCompleto(nomeCompleto);
+
+      // Atualizar o conteúdo do parágrafo com o resultado
+      document.getElementById('resultado').textContent = `O nome completo "${nomeCompleto}" tem ${resultado} letras.`;
+    }
+  </script>
+</body>
+</html>

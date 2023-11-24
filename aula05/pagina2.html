@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contagem de Vogais no Nome</title>
+</head>
+<body>
+  <h1>Contagem de Vogais no Nome</h1>
+  <label for="nomeInput">Insira o Nome:</label>
+  <input type="text" id="nomeInput">
+  <button onclick="exibirContagem()">Contar Vogais</button>
+  <p id="resultado"></p>
+
+  <script>
+    function contarVogaisNoNome(nome) {
+      const vogais = 'aeiouAEIOU';
+      let contador = 0;
+      for (let i = 0; i < nome.length; i++) {
+        if (vogais.includes(nome[i])) {
+          contador++;
+        }
+      }
+      return contador;
+    }
+
+    function exibirContagem() {
+      const nome = document.getElementById('nomeInput').value;
+      const resultado = contarVogaisNoNome(nome);
+
+      // Atualizar o conteúdo do parágrafo com o resultado
+      document.getElementById('resultado').textContent = `O nome "${nome}" tem ${resultado} vogais.`;
+    }
+  </script>
+</body>
+</html>

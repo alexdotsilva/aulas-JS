@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    // 1 declare uma variavel chamada frutas e atribua a ela um array de frutas
+    // 2 declare uma função chamada lista de frutas que imprime todas as frutas
+    //3 chame a função lista de frutas
+    // 4 adicione novas frutas no array
+    // chame a função frutas novamente
+    <script>
+
+        let frutas = ["banana", "laranja", "kiwi"];
+        function listaDeFrutas(){
+            for (let i = 0; i < frutas.length; i++){
+                console.log(frutas[i]);
+            }
+        }
+        listaDeFrutas();
+        frutas.push("figo");
+
+        listaDeFrutas();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contagem de Vogais</title>
+</head>
+<body>
+  <h1>Contagem de Vogais</h1>
+  <p id="resultado"></p>
+
+  <script>
+    function contarVogais(frase) {
+      const vogais = 'aeiouAEIOU';
+      let contador = 0;
+      for (let i = 0; i < frase.length; i++) {
+        if (vogais.includes(frase[i])) {
+          contador++;
+        }
+      }
+      return contador;
+    }
+
+    const frase = 'Olá, mundo!';
+    const resultado = contarVogais(frase);
+
+    // Atualizar o conteúdo do parágrafo com o resultado
+    document.getElementById('resultado').textContent = `A frase "${frase}" tem ${resultado} vogais.`;
+  </script>
+</body>
+</html>
