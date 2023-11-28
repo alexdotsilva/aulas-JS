@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <p id="saida"></p>
+
+    <script>
+        const str1 = 'Olá ';
+        const str2 = 'mundo!';
+        const novaString = str1 + str2; // concatena 2 string
+        console.log(novaString);
+
+
+        const array1 = ['a', 'b'];
+        const array2 = ['c', 'd'];
+        const newArray = array1.concat(array2);
+        console.log(newArray); // Saida: [a,b,c,d]
+
+        const array = ['a', 'b'];
+        array.push('c', 'd')
+        console.log(array); // Saida: [a,b,c,d]
+
+        document.getElementById('saida').textContent = novaString;
+        // linha para exibir uma resultado, liga a "novaString" ao id=saidano paragrafo
+
+
+
+
+     </script>
+
+</body>
+</html>

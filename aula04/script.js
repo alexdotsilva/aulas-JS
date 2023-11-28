@@ -23,10 +23,10 @@ function validarCampo(campo){
         erroElement.innerHTML = `<p>precisa ser maior!</p>`;
     }
     else if (campo.id === "cpf" && !validarCpf (valorCampo)){
-        erroElement.innerHTML=<p>Cpf está inválido.Favor corrigir!</p>;
+        erroElement.innerHTML=`<p>Cpf está inválido.Favor corrigir!</p>`;
     }
     else if (campo.id === "email" && !validarEmail (valorCampo)){
-        erroElement.innerHTML=<p>Insira um endereço de e-mail válido.</p>;
+        erroElement.innerHTML=`<p>Insira um endereço de e-mail válido.</p>`;
     }
     else {
         erroElement.innerHTML=``;

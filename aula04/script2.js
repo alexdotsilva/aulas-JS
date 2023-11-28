@@ -1,26 +1,77 @@
-document.addEventListener("DOMContentLoaded", function(){
-    const camposForm = document.querySelectorAll("[required]")
-    camposForm.forEach((campo) => {
-    campo.addEventListener("blur", () => {
-        validarCampo(campo);
-    });
+document.addEventListener("DOMContentLoaded",function(){
+    const camposForm = document.querySelectorAll("[required]");
+    camposForm.forEach((campo)=>{
+        campo.addEventListener("blur",()=>{
+            validarCampo(campo);
+        //console.log("passou aqui")
+        });
     });
 });
 
 function validarCampo(campo){
     const valorCampo = campo.value;
-    const errorElement = document.getElementById(`erro${campo.id.charAt(0).toUpperCase()+ campo.id.slice(1)}`);
+    const erroElement = document.getElementById(`erro${
+        campo.id.charAt(0).toUpperCase()+ campo.id.slice(1)}`);
 
-    if(valorCampo.trim()=== ''){
-        errorElement.innerHTML = `<p>Campo Inválido</p>`;
+    if(valorCampo.trim()=== " " ){
+        erroElement.innerHTML = `<p>tá esquecendo nada não?</p>`;
+    }
+    else if(campo.id === "nome" && valorCampo.length < 3){
+        erroElement.innerHTML = `<p>precisa ser maior!</p>`;
+    }
+    else if(campo.id === "sobrenome" && valorCampo.length < 3){
+        erroElement.innerHTML = `<p>precisa ser maior!</p>`;
+    }
+    else if (campo.id === "cpf" && !validarCPF (valorCampo)){
+        erroElement.innerHTML=`<p>Cpf está inválido.Favor corrigir!</p>`;
+    }
+    else if (campo.id === "email" && !validarEmail (valorCampo)){
+        erroElement.innerHTML=`<p>Insira um endereço de e-mail válido.</p>`;
+    }
+    else {
+        erroElement.innerHTML=``;
     }
 
- else if(campo.id === "nome" && valorCampo.lenght < 3){
-        errorElement.innerHTML = `<p>Campo Inválido</p>`;
- }
- else if(campo.id === "sobrenome" && valorCampo.lenght < 3){
-    errorElement.innerHTML = `<p>Campo Inválido</p>`;
- }
- else {errorElement.innerHTML=``
-};
+    function validarCpf(cpf){
+    return /\d{3}\.\d{3}\.\d{3}-\d{2}/.test(cpf);
 }
+function validarEmail(email){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function validarCPF(cpf){
+    cpf = cpf.replace(/[^\d]+/g,"");// remove caracteres não numericos
+    if (cpf == "") return false; // se campo ficar vazio, indica se campo está vazio
+    if(
+        cpf.length != 11 ||
+        cpf == "00000000000" ||
+		cpf == "11111111111" ||
+		cpf == "22222222222" ||
+		cpf == "33333333333" ||
+		cpf == "44444444444" ||
+		cpf == "55555555555" ||
+		cpf == "66666666666" ||
+		cpf == "77777777777" ||
+		cpf == "88888888888" ||
+		cpf == "99999999999"
+    ) return false;
+
+    // valida primeiro digito do CPF
+    let add = 0; // variavel "add" com valor 0
+    for(i = 0; i < 9; i++) add += parseInt(cpf.charAt(i))*(10-i); //laço de repetição
+    let rev = 11-(add%11);
+    if(rev==10 || rev==11) rev = 0;
+    if(rev!=parseInt(cpf.charAt(9))) return false;
+
+    // valida segundo digito do CPF
+    add = 0;
+    for(i=0; i<10; i++) add += parseInt(cpf.charAt(i))*(11-i);
+    rev = 11-(add%11);
+    if(rev==10 || rev==11) rev=0;
+    if(rev!=parseInt(cpf.charAt(10))) return false;
+
+    return true;
+}
+
+};
+
